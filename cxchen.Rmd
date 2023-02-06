@@ -1,0 +1,22 @@
+---
+title: "cxchen"
+author: "andrew"
+date: "2023-02-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+EuNorm = function(x){
+  solution = sqrt(sum(x^2))
+  return(solution)
+}
+
+temp = c(1 : 5)
+tempEuNorm = EuNorm(temp)
+tempEuNorm
+```
+
