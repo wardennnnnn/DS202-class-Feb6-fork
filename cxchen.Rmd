@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Write a function to find euclidean norm of a vector
 ```{r}
 EuNorm = function(x){
   solution = sqrt(sum(x^2))
@@ -18,5 +19,30 @@ EuNorm = function(x){
 temp = c(1 : 5)
 tempEuNorm = EuNorm(temp)
 tempEuNorm
+```
+
+Loop
+```{r}
+a = c(1 : 5)
+b = c()
+
+for (i in 1 : length(a)){
+  b[i] = a[i] / 2
+  b[i] #doesn't print while in loop
+  #print(b[i]) #use print() function
+  cat("iteration = ", i, ", value = ", b[i], "\n")
+}
+```
+
+Write loop function to find Euclidean norm of a vector
+```{r}
+temp2 = c(3 : 16)
+total = 0
+
+for (i in 1 : length(temp2)){
+  total = total + temp2[i]^2
+  cat("iteration = ", i, ", value = ", temp2[i], "\n")
+}
+sqrt(total)
 ```
 
