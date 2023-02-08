@@ -118,9 +118,57 @@ temp4 = c(1:10)
 variance(temp4)
 var(temp4)
 ```
+Simulation example
+Suppose we have data from normal distribution with mean mu=5 and var=1.
+We want to estimate mu^2 (true value is 25). We have two estimators:
 
+1. theta1 = average^2
 
+2. theta2 = 1/(n(n-1)) * sum(Xi*Xj)
 
+Which estimator is better?
+
+```{r}
+theta1 = function(x){
+  return(mean(x)^2)
+}
+
+theta2 = function(x){
+  n = length(x)
+  iPart = sum(x)^2
+  jPart = sum(x^2)
+  
+  res = (iPart-jPart)/(n*(n-1))
+  #res = (sum(x)^2 - sum(x^2))/n*n(-1)
+
+  return(res)
+}
+
+```
+
+```{r}
+#simulation
+#suppose n=20
+#sim 1k times
+
+diff1 = c()
+diff2 = c()
+
+for(rep in 1 : 1000){
+  z = rnorm(20,5,1)
+  diff1[rep] = theta1(z) - 25
+  diff2[rep] = theta2(z) - 25
+}
+
+```
+
+```{r}
+hist(diff1)
+```
+
+```{r}
+hist(diff2)
+```
 
 
 
