@@ -41,8 +41,91 @@ total = 0
 
 for (i in 1 : length(temp2)){
   total = total + temp2[i]^2
-  cat("iteration = ", i, ", value = ", temp2[i], "\n")
+  #cat("iteration = ", i, ", value = ", temp2[i], "\n")
 }
 sqrt(total)
 ```
+
+Use loops to write function to calculate Euclidean norm
+```{r}
+EuNormLoop = function(x){
+  EuNormLoopOutput = 0
+  
+  for (i in 1 : length(x)) {
+    EuNormLoopOutput = EuNormLoopOutput + x[i]^2
+    cat("iteration = ", i, ", value = ", x[i], "\n")
+  }
+  
+  return(sqrt(EuNormLoopOutput))
+}
+temp3 = c(3 : 16)
+
+EuNormLoop(temp3)
+
+```
+
+Extract from a vector/matrix
+
+```{r}
+a = c(1,3,5,7,9)
+a[3] #3rd index
+
+a[c(1,2)] #1st and 2nd index
+
+A = matrix(c(1:9), 3, 3) 
+#varName = matrix(c(values), rows, columns)
+#adds values starting from first column, top to bottom
+#byrow = TRUE will fill starting from first row, left to right
+
+#will send error message if matrix dimensions don't match number of values
+#matrix will still be filled until there are no more columns
+#values repeat if matrix is too big
+
+A
+
+A[1,2]
+#[row, column]
+```
+```{r}
+B = matrix(sample(c(1:25)), 5, 5) #sample is random numbers
+B
+
+B[1:3,1:3]
+#row 1,2,3 and column 1,2,3
+
+B[c(1,3,5), c(2,4)]
+#rows 1,3,5 and columns 2,4
+
+B[1,]
+#all of row 1
+
+B[,1]
+#all of column 1
+```
+
+Write function to calculate the variance of data X = (x1, x2, ... xn)
+```{r}
+variance = function(x){
+  n = length(x) #for sample size of x
+  xBar = sum(x)/n
+  x.center = x - xBar
+  
+  res = sum(x.center^2)/(n-1)
+  return(res)
+}
+
+temp4 = c(1:10)
+variance(temp4)
+var(temp4)
+```
+
+
+
+
+
+
+
+
+
+
 
